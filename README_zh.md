@@ -49,3 +49,16 @@ powershell -ExecutionPolicy Bypass -File .\patcher.ps1 -Launch
 - `-Launch` 模式日志写入 `patch_last_run.log`
 - 安装包放在 `installer/` 目录（已在 `.gitignore` 中忽略，不入库）
 
+## 快捷方式生成器
+
+双击 `Create-Shapr3D-Shortcut.exe`，会自动检测 Shapr3D 的 AppX 安装位置，在桌面创建
+`Shapr3D (自动补丁).lnk`（使用 Shapr3D 图标）。以后用该快捷方式启动，会自动打补丁。
+
+- 程序需与 `patcher.ps1` 放在同一目录
+- 源码：`tools/CreateShortcut.cs`
+- 重新编译：
+  ```powershell
+  C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe /target:winexe /out:Create-Shapr3D-Shortcut.exe /r:System.Windows.Forms.dll tools\CreateShortcut.cs
+  ```
+
+
